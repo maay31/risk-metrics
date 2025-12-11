@@ -9,6 +9,7 @@ from scipy import stats
 import yfinance as yf
 import matplotlib.pyplot as plt
 from datetime import datetime, timedelta
+import streamlit as st
 
 
 class RiskMetrics:
@@ -306,5 +307,6 @@ if __name__ == "__main__":
     # Run crypto examples with real market data
     example_crypto_var()
     example_crypto_portfolio()
+
 
 

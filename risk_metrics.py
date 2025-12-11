@@ -171,7 +171,7 @@ def fetch_crypto_data(ticker, period='1y'):
     """
     print(f"Fetching {ticker} data...")
     data = yf.download(ticker, period=period, progress=False)
-    data['Returns'] = data['Adj Close'].pct_change().dropna()
+    data['Returns'] = data['Close'].pct_change().dropna()
     return data
 
 
@@ -306,3 +306,4 @@ if __name__ == "__main__":
     # Run crypto examples with real market data
     example_crypto_var()
     example_crypto_portfolio()
+

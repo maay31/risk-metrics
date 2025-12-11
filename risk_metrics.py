@@ -214,7 +214,7 @@ def plot_var_analysis(returns, var, portfolio_value, confidence_level=0.95):
     plt.tight_layout()
     plt.savefig('var_analysis.png', dpi=150, bbox_inches='tight')
     print("\n📊 Chart saved as 'var_analysis.png'")
-    plt.show()
+    st.pyplot()
 
 
 def example_crypto_var():
@@ -306,4 +306,5 @@ if __name__ == "__main__":
     # Run crypto examples with real market data
     example_crypto_var()
     example_crypto_portfolio()
+
 

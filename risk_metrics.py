@@ -244,7 +244,7 @@ def example_crypto_var():
     print(f"{'Confidence Level:':<20} {summary['Confidence Level']}")
     print(f"{'Time Horizon:':<20} {summary['Time Horizon']}")
     print(f"\n{'Mean Daily Return:':<20} {returns.mean()*100:.4f}%")
-    print(f"{'Daily Volatility:':<20} {returns.std()*100:.4f}%")
+    st.markdown(f"**Daily Volatility:** {portfolio_returns.std()*100:.4f}%")':<20} {returns.std()*100:.4f}%")
     print(f"\n{'📊 Value at Risk:':<20} ${summary['VaR']:,.2f}")
     print(f"\n💡 {summary['Interpretation']}")
     
@@ -286,20 +286,20 @@ def example_crypto_portfolio():
     
     print(f"\n{'Total Portfolio:':<20} ${portfolio_value:,.2f}")
     print(f"{'Confidence Level:':<20} {confidence_level*100}%")
-    print(f"{'Time Horizon:':<20} 1 day")
-    print(f"{'Data Points:':<20} {len(returns_df)} days")
+    st.write(f"**Time Horizon:** 1 day")
+    st.write(f"**Data Points:** {len(returns_df)} days")
     
     # Portfolio statistics
     portfolio_returns = (returns_df * weights).sum(axis=1)
     print(f"\n{'Mean Daily Return:':<20} {portfolio_returns.mean()*100:.4f}%")
-    print(f"{'Daily Volatility:':<20} {portfolio_returns.std()*100:.4f}%")
+    st.markdown(f"**Daily Volatility:** {portfolio_returns.std()*100:.4f}%")':<20} {portfolio_returns.std()*100:.4f}%")
     
     print(f"\n{'📊 Portfolio VaR:':<20} ${var:,.2f}")
-    print(f"\n💡 With {confidence_level*100}% confidence, this portfolio will not lose more than ${var:,.2f} in one day")
+    st.info(f"💡 With {confidence_level*100}% confidence, this portfolio will not lose more than **${var:,.2f}** in one day")
     
     # Correlation matrix
-    print(f"\n{'Correlation Matrix:'}")
-    print(returns_df.corr().round(3))
+    st.subheader("Correlation Matrix")
+    print(st.dataframe(returns_df.corr().round(3))().round(3))
     print()
 
 
@@ -307,6 +307,7 @@ if __name__ == "__main__":
     # Run crypto examples with real market data
     example_crypto_var()
     example_crypto_portfolio()
+
 
 
 
